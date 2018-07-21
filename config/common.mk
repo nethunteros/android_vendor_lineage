@@ -83,7 +83,7 @@ PRODUCT_COPY_FILES += \
 
 # NETHUNTER - Magisk
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/Magisk-v13.3.zip:system/addon.d/Magisk-v16.7.zip
+    vendor/lineage/prebuilt/common/Magisk-v16.7.zip:system/addon.d/Magisk-v16.7.zip
 
 # NETHUNTER - Copy wireless firmware files
 PRODUCT_COPY_FILES += \
