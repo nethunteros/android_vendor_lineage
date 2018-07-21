@@ -76,6 +76,40 @@ PRODUCT_COPY_FILES += \
     vendor/lineage/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 endif
 
+# NETHUNTER - Copy prebuilt binaries
+PRODUCT_COPY_FILES += \
+    vendor/lineage/prebuilt/common/xbin/busybox_nh:system/xbin/busybox_nh \
+    vendor/lineage/prebuilt/common/xbin/hid-keyboard:system/xbin/hid-keyboard
+
+# NETHUNTER - Magisk
+PRODUCT_COPY_FILES += \
+    vendor/lineage/prebuilt/common/Magisk-v13.3.zip:system/addon.d/Magisk-v16.7.zip
+
+# NETHUNTER - Copy wireless firmware files
+PRODUCT_COPY_FILES += \
+    vendor/lineage/prebuilt/common/etc/firmware/ar9170-1.fw:system/etc/firmware/ar9170-1.fw \
+    vendor/lineage/prebuilt/common/etc/firmware/ar9170-2.fw:system/etc/firmware/ar9170-2.fw \
+    vendor/lineage/prebuilt/common/etc/firmware/carl9170-1.fw:system/etc/firmware/carl9170-1.fw \
+    vendor/lineage/prebuilt/common/etc/firmware/htc_7010.fw:system/etc/firmware/htc_7010.fw \
+    vendor/lineage/prebuilt/common/etc/firmware/htc_9271.fw:system/etc/firmware/htc_9271.fw \
+    vendor/lineage/prebuilt/common/etc/firmware/rt2561.bin:system/etc/firmware/rt2561.bin \
+    vendor/lineage/prebuilt/common/etc/firmware/rt2860.bin:system/etc/firmware/rt2860.bin \
+    vendor/lineage/prebuilt/common/etc/firmware/rt2870.bin:system/etc/firmware/rt2870.bin \
+    vendor/lineage/prebuilt/common/etc/firmware/rt3070.bin:system/etc/firmware/rt3070.bin \
+    vendor/lineage/prebuilt/common/etc/firmware/rt73.bin:system/etc/firmware/rt73.bin \
+    vendor/lineage/prebuilt/common/etc/firmware/rtlwifi/rtl8188efw.bin:system/etc/firmware/rtlwifi/rtl8188efw.bin \
+    vendor/lineage/prebuilt/common/etc/firmware/rtlwifi/rtl8192cufw.bin:system/etc/firmware/rtlwifi/rtl8192cufw.bin \
+    vendor/lineage/prebuilt/common/etc/firmware/zd1211/zd1211_ub:system/etc/firmware/zd1211/zd1211_ub \
+    vendor/lineage/prebuilt/common/etc/firmware/zd1211/zd1211_uph:system/etc/firmware/zd1211/zd1211_uph \
+    vendor/lineage/prebuilt/common/etc/firmware/zd1211/zd1211_uphm:system/etc/firmware/zd1211/zd1211_uphm \
+    vendor/lineage/prebuilt/common/etc/firmware/zd1211/zd1211_uphr:system/etc/firmware/zd1211/zd1211_uphr \
+    vendor/lineage/prebuilt/common/etc/firmware/zd1211/zd1211_ur:system/etc/firmware/zd1211/zd1211_ur \
+    vendor/lineage/prebuilt/common/etc/firmware/zd1211/zd1211b_ub:system/etc/firmware/zd1211/zd1211b_ub \
+    vendor/lineage/prebuilt/common/etc/firmware/zd1211/zd1211b_uph:system/etc/firmware/zd1211/zd1211b_uph \
+    vendor/lineage/prebuilt/common/etc/firmware/zd1211/zd1211b_uphm:system/etc/firmware/zd1211/zd1211b_uphm \
+    vendor/lineage/prebuilt/common/etc/firmware/zd1211/zd1211b_uphr:system/etc/firmware/zd1211/zd1211b_uphr \
+    vendor/lineage/prebuilt/common/etc/firmware/zd1211/zd1211b_ur:system/etc/firmware/zd1211/zd1211b_ur
+
 # Copy all Lineage-specific init rc files
 $(foreach f,$(wildcard vendor/lineage/prebuilt/common/etc/init/*.rc),\
 	$(eval PRODUCT_COPY_FILES += $(f):system/etc/init/$(notdir $f)))
@@ -110,9 +144,8 @@ ifeq ($(WITH_TWRP),true)
 include vendor/lineage/config/twrp.mk
 endif
 
-# Bootanimation
-PRODUCT_PACKAGES += \
-    bootanimation.zip
+# NETHUNTER - Bootanimation
+PRODUCT_BOOTANIMATION := vendor/lineage/prebuilt/common/bootanimation/bootanimation.zip
 
 # Required Lineage packages
 PRODUCT_PACKAGES += \
@@ -146,6 +179,13 @@ PRODUCT_PACKAGES += \
     Updater \
     WallpaperPicker \
     WeatherProvider
+
+# NETHUNTER - packages (terminal is automatically replaced)
+PRODUCT_PACKAGES += \
+    Nethunter \
+    androidVNC \
+    MagiskManager \
+    Drivedroid
 
 # Exchange support
 PRODUCT_PACKAGES += \
